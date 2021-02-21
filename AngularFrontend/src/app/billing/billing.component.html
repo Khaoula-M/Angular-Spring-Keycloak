@@ -1,0 +1,78 @@
+<pre>
+
+
+
+
+
+</pre>
+<!--{{ bills| json }}-->
+
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading"></div>
+      <div class="panel-body" *ngIf="bills">
+        <div>
+          <!--<table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th scope="col">ID</th>
+              <th scope="col">Item/Price</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Date</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bill of bills">
+              <th scope="row"> {{bill.id}}</th>
+              <td class="serif" width="350"> <li *ngFor="let item of bill.productItems">{{item.product.name}}
+                {{item.product.price}} </li></td>
+              <td class="monospace"> {{bill.customer.name}}</td>
+              <td class="serif" width="350"> {{bill.billingDate}}</td>
+            </tr>
+            </tbody>
+          </table>-->
+
+         <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th scope="col">ID</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Item</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+              <th scope="col">Date</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bill of bills">
+              <th scope="row"> 3</th>
+              <th scope="row"> Mehdi</th>
+              <td class="serif" width="350">
+                <li>Laptop</li>
+                <li>Gaming Keyboard</li>
+                <li>Mobile</li></td>
+              <td class="serif" width="350">
+                <li>7000</li>
+                <li>399</li>
+                <li>800</li>
+              </td>
+              <td class="serif" width="350">
+                <li>2</li>
+                <li>3</li>
+                <li>1</li></td>
+              <td class="monospace"> 43997</td>
+              <td class="serif" width="350">2021-02-21T11:29:01</td>
+            </tr>
+            </tbody>
+          </table>
+          <!--<h4>You haven't purchased any item for the moment </h4>-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

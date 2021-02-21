@@ -1,0 +1,63 @@
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">List of Products</div>
+      <div class="panel-body" *ngIf="products">
+        <form #f="ngForm" (ngSubmit)="SearchProduct(inp.value)">
+          <div class="form-group">
+            <div class="chercher">
+              <input class="form-control" type="text" name="productname" placeholder="Product's name" ngModel
+                     #inp>
+            </div>
+            <button type="submit" class="btn btn-info">Search</button>
+          </div>
+        </form>
+        <div>
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Available Quantity</th>
+              <th scope="col">Selected</th>
+              <th scope="col">Purchase Quantity</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let p of products">
+              <th scope="row"> {{p.id}}</th>
+              <td class="monospace"> {{p.name}}</td>
+              <td class="serif" width="350"> {{p.price}}</td>
+              <td class="monospace"> {{p.quantity}}</td>
+              <td>
+                <button (click)="onSelect(p)" [ngClass]="p.selected?'btn-success':'btn-danger'" class="btn btn-sm">
+                  <span *ngIf="p.selected">Unselect</span>
+                  <span *ngIf="!p.selected">Select</span>
+                </button>
+              </td>
+              <td>
+                <form #f="ngForm" (ngSubmit)="addToBill()">
+                  <div class="form-group">
+                    <input type="number" placeholder="0" class="btn btn-light" />
+                  </div>
+                </form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <form #f="ngForm" (ngSubmit)="addToBill()">
+          <div class="form-group">
+            <button type="submit" class="btn btn-info">Add to my bill</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

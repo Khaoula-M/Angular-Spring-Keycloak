@@ -1,0 +1,39 @@
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">List of Customers</div>
+      <div class="panel-body" *ngIf="customers">
+        <form #f="ngForm" (ngSubmit)="SearchCustomer(inp.value)">
+          <div class="form-group">
+            <div class="chercher">
+              <input class="form-control" type="text" name="name" placeholder="Customer's name" ngModel
+                     #inp>
+            </div>
+            <button type="submit" class="btn btn-info">Search</button>
+          </div>
+        </form>
+        <div>
+          <table class="table table-striped">
+            <thead>
+            <tr class="info">
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let f of customers">
+              <th scope="row"> {{f.id}}</th>
+              <td class="serif" width="350"> {{f.name}}</td>
+              <td class="monospace"> {{f.email}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

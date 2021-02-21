@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">E-commerce</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" routerLinkActive="active" routerLink="products" data-toggle="dropdown">Products</a>
+      <ul class="dropdown-menu">
+        <a class="dropdown-item"  *ngIf="isAppManager()" routerLink="addProduct">Add</a>
+        <a class="dropdown-item"  *ngIf="isAppManager()" href="http://localhost:8090/films">Edit</a>
+        <a class="dropdown-item"  *ngIf="isAppManager()" href="http://localhost:8090/formFilm">Delete</a>
+      </ul>
+    </li>
+    <li class="nav-item dropdown"  *ngIf="isAppManager()">
+      <a class="nav-link dropdown-toggle"  routerLink="customers" data-toggle="dropdown">Customers</a>
+      <ul class="dropdown-menu">
+        <a class="dropdown-item"  routerLink="addProduct">Add</a>
+        <a class="dropdown-item"  href="http://localhost:8090/films">Edit</a>
+        <a class="dropdown-item"  href="http://localhost:8090/formFilm">Delete</a>
+      </ul>
+    </li>
+
+
+    <li class="nav-item">
+      <a class="nav-link" routerLinkActive="active" routerLink="bills">My Bill</a>
+    </li>
+
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <!-- Dropdown -->
+    <li class="nav-item dropdown" *ngIf="!this.isAuth">
+      <a class="nav-link" (click)="onLogin()">Login</a>
+    </li>
+
+    <li class="nav-item dropdown" *ngIf="this.isAuth">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" href="/sso/login">
+        {{ userInformations.name }}
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" (click)="onLogout()">Logout</a>
+        <a class="dropdown-item" (click)="ManagedAccount()">Manage account</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
